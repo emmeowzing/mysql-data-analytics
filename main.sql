@@ -1219,3 +1219,36 @@ drop procedure average_employee_salary;
 drop procedure get_employees;
 
 -- Parametric procedures.
+-- See employee_salary_from_emp_no.sql for solution to a parametric procedure. It's  really cool because SQL Workbench will prompt you for the type/inputs in order to produce outputs.
+call employees.employee_salary(110022);
+
+-- Multi-parameter procedures and outputs -
+-- See emp_avg_salary_out.sql for solution / work
+
+-- Exercise:
+-- see emp_info.sql for my procedure.
+
+-- Variables
+set @v_employee_number = 0;
+call emp_info('Margareta', 'Markovitch', @v_employee_number);
+select @v_employee_number; -- cool! I didn't even know MySQL had variables.
+
+-- Exercise:
+set @v_emp_no = 0;
+call emp_info('Aruna', 'Journel', @v_emp_no);
+select @v_emp_no;
+
+-- User-defined functions in MySQL
+-- Within function bodies, use the declare keyword to create a variable that's associated with the function object.
+-- There also needs to be a return statement if you've defined 'returns' in the function signature.
+
+-- Exercise: write a function that accepts an employee number as input, and returns the average salary of the employee as output.
+-- See file function_avg_salary.sql for the solution.
+
+-- Differences between procedures and functions:
+-- Procedures can have multiple out parameters, whereas functions can only have one output.
+-- Functions must always return a value. So, if you need to perform an operation like INSERT, DELETE, or UPDATE, use a procedure.
+-- procedures are call'ed, whereas functions are select'ed.
+
+-- Moving on to Tableau!
+-- SQL and Tableau can be integrated to produce visualizations. I'd like to try this with Grafana as well.
