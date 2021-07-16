@@ -1252,3 +1252,29 @@ select @v_emp_no;
 
 -- Moving on to Tableau!
 -- SQL and Tableau can be integrated to produce visualizations. I'd like to try this with Grafana as well.
+
+/*
+Section 19
+==========
+Advanced MySQL.
+Local variables and scopes.
+You can declare local variables in function bodies between BEGIN ... END clause, and after the END statement, the variables declared are no longer in the current scope.
+*/
+
+-- Session variables.
+
+-- Global variables
+set global max_connections = 1000;
+
+-- Case statement in queries
+use employees;
+select
+	emp_no, first_name, last_name,
+    case gender -- replace 'M' and 'F' with 'Male' and 'Female'
+    when
+		'M' then 'Male'
+	else
+		'Female'
+	end as gender
+from
+	employees;
